@@ -9,10 +9,11 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        article = Article.new(article_params)
-        if article.save
-            redirect_to "/articles"
+        @article = Article.new(article_params)
+        if @article.save
+            redirect_to "/articles", notice: "文章新增成功"
         else
+            render :new
         end
     end
 
