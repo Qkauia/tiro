@@ -10,17 +10,25 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
-        
+
         if @article.save
             redirect_to "/articles", notice: "文章新增成功"
         else
+            flash[:notice] = "新增失敗"
             render :new
         end
     end
 
     def show
         @article = Article.find(params[:id])
-        render html: @article.title
+    end
+    
+    def edit
+        @article = Article.find(params[:id])
+    end
+
+    def update
+
     end
     
     private
