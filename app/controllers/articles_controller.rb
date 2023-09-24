@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
-    # validates ${:attribute}
+    
     def index
         @articles = Article.all.order(id: :desc)
     end
@@ -11,6 +10,7 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
+        
         if @article.save
             redirect_to "/articles", notice: "文章新增成功"
         else
@@ -22,6 +22,8 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         render html: @article.title
     end
+    
+    private
 
     def article_params
         params.require(:article).permit(:title, :content)
