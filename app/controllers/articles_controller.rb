@@ -28,7 +28,13 @@ class ArticlesController < ApplicationController
     end
 
     def update
-
+        @article = Article.find(params[:id])
+        if @article.update(article_params)
+            redirect_to article_path, notice: "修改成功！！"
+        else
+            flash[:notice] = "修改失敗"
+            render :edit
+        end
     end
     
     private
