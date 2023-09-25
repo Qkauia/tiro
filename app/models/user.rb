@@ -7,5 +7,9 @@ class User < ApplicationRecord
                         with: URI::MailTo::EMAIL_REGEXP ,
                         message: '格式錯誤'
                       }
+    before_create :encrypt_password
     
+    def encrypt_password
+        self.password = Digest::SHA1.hexdigest(self.password)
+    end
 end
