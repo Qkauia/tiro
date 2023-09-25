@@ -10,6 +10,7 @@ class User < ApplicationRecord
     before_create :encrypt_password
     
     def encrypt_password
-        self.password = Digest::SHA1.hexdigest(self.password)
+        pw = "x#{self.password}y"
+        self.password = Digest::SHA1.hexdigest(pw)
     end
 end
