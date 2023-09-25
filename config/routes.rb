@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # patch 'articles/:id', to: 'articles#update'
   # delete 'articles/:id', to: 'articles#destroy'
   resources :articles
+  resource :users, except: [:show, :destroy ]
 end
