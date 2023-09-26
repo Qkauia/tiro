@@ -24,6 +24,7 @@ class UsersController < ApplicationController
         )
         
         if user
+            session[:xman] = user.id
             redirect_to root_path, notice: "登入成功！！"
         else
             redirect_to login_users_path, alert: '登入失敗'

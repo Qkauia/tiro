@@ -18,7 +18,6 @@ class User < ApplicationRecord
       find_by email: email, password: password
     end
 
-
     private
     def encrypt_password
         pw = "x#{self.password}y".reverse
