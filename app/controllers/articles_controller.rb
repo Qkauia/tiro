@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
 
-    before_action :set_article, only:[:show, :edit, :update, :destroy]
+    before_action :set_article, only:[:show]
+    before_action :set_user_article, only:[:edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
-        @articles = Article.order(id: :desc)
+        @articles = Article.includes(:user).order(id: :desc)
     end
 
     def new
@@ -54,5 +55,8 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
 
+    def set_user_article
+        @article = current_user.articles.find(params[:id])
+    end
     
 end

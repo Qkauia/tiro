@@ -14,7 +14,15 @@ class User < ApplicationRecord
                         message: '格式錯誤'
                       }
     
-    
+    def display_name
+      name.presence || email.split("@").first.capitalize
+        # if self.name.present?
+        #     self.name
+        # else
+        #     self.email.split("@").first.capitalize
+        # end
+    end
+
     # class methods
     def self.login(email, password)
       return nil if email.empty? or password.empty?
