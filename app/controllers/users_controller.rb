@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     end
 
     def logout
-        
+        session[:xman] = nil
+        redirect_to root_path, noice: "已經登出！！"
     end
 
     private

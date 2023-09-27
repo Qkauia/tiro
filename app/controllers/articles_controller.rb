@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
 
     before_action :set_article, only:[:show, :edit, :update, :destroy]
+    include UsersHelper
 
     def index
+        @u = current_user
         @articles = Article.order(id: :desc)
     end
 

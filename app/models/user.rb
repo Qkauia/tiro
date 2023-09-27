@@ -19,8 +19,7 @@ class User < ApplicationRecord
     end
 
     def self.logout
-      session[:xman] = nil 
-      redirect_to root_path, noice: "已經登出！！"
+      session[:xman].remove
     end
 
     private
