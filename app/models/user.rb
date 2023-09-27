@@ -18,6 +18,11 @@ class User < ApplicationRecord
       find_by email: email, password: password
     end
 
+    def self.logout
+      session[:xman] = nil 
+      redirect_to root_path, noice: "已經登出！！"
+    end
+
     private
     def encrypt_password
         pw = "x#{self.password}y".reverse
