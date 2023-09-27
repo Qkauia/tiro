@@ -5,6 +5,16 @@
     <p><%= @article.content %></p>
 </article>
 <hr>
+<ul>
+    <% @comments.each do |comment|%>
+        <li>
+            <%= comment.content %>
+            (<%= comment.created_at %>)
+        </li>
+    <% end %>
+</ul>
+
+<hr>
 
 <h2>留言版</h2>
 
@@ -12,16 +22,6 @@
                 url: article_comments_path(@article),
                data: {turbo: false}) do |f| %>
 
-    <div>
-    <%= f.label :content, "留言" %>
-    <%= f.text_area :content %>
-    </div>
-    <br>
-    <div><%= f.submit "新增留言"%></div>
-
-<% end %>
-<br>
-<%= form_with(model: [@article, @comment], data: {turbo: false})do |f| %>
     <div>
     <%= f.label :content, "留言" %>
     <%= f.text_area :content %>
