@@ -1,9 +1,8 @@
 class ArticlesController < ApplicationController
 
     before_action :set_article, only:[:show, :edit, :update, :destroy]
-    
+    before_action :authenticate_user!, except: [:index, :show]
     def index
-        @u = current_user
         @articles = Article.order(id: :desc)
     end
 
@@ -50,5 +49,11 @@ class ArticlesController < ApplicationController
 
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def authenticate_user!
+        if not user_signed_in?
+            redirect_to login_users_path, notice: "請先登入會員"
+        end
     end
 end

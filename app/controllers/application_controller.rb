@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
     helper_method :user_signed_in?, :current_user
     private
 
+    def authenticate_user!
+        if not user_signed_in?
+            redirect_to login_users_path, notice: "請先登入會員"
+        end
+    end
+
     def user_signed_in?
         session[:xman].present?
     end
