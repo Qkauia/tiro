@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 
     before_action :set_article, only:[:show, :edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
+
     def index
         @articles = Article.order(id: :desc)
     end
@@ -11,7 +12,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new(article_params)
+        @article = current_user.articles.new(article_params)
 
         if @article.save
             redirect_to "/articles", notice: "文章新增成功"
@@ -44,7 +45,9 @@ class ArticlesController < ApplicationController
     private
 
     def article_params
-        params.require(:article).permit(:title, :content, :subtitle)
+        params.require(:article)
+        .permit(:title, :content, :subtitle)
+        # .merge(user: current_user)
     end
 
     def set_article

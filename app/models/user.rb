@@ -1,5 +1,11 @@
 class User < ApplicationRecord
+    # callback
+    before_create :encrypt_password
 
+    # relationships
+    has_many :articles
+
+    # vaidations
     validates :password, confirmation: true, length: { in: 8..12 }
     validates :email, presence: true, 
                       uniqueness: true, 
@@ -7,9 +13,9 @@ class User < ApplicationRecord
                         with: URI::MailTo::EMAIL_REGEXP ,
                         message: '格式錯誤'
                       }
-    before_create :encrypt_password
     
     
+    # class methods
     def self.login(email, password)
       return nil if email.empty? or password.empty?
 
