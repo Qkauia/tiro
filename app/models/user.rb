@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
     # relationships
     has_many :articles
+    has_many :comments
 
     # vaidations
     validates :password, confirmation: true, length: { in: 8..12 }

@@ -4,3 +4,29 @@
 <article>
     <p><%= @article.content %></p>
 </article>
+<hr>
+
+<h2>留言版</h2>
+
+<%= form_with( model: @comment ,
+                url: article_comments_path(@article),
+               data: {turbo: false}) do |f| %>
+
+    <div>
+    <%= f.label :content, "留言" %>
+    <%= f.text_area :content %>
+    </div>
+    <br>
+    <div><%= f.submit "新增留言"%></div>
+
+<% end %>
+<br>
+<%= form_with(model: [@article, @comment], data: {turbo: false})do |f| %>
+    <div>
+    <%= f.label :content, "留言" %>
+    <%= f.text_area :content %>
+    </div>
+    <br>
+    <div><%= f.submit "新增留言"%></div>
+
+<% end %>

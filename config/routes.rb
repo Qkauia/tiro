@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   # get '/articles/:id/edit', to: 'articles#edit', as: 'edit_article'
   # patch 'articles/:id', to: 'articles#update'
   # delete 'articles/:id', to: 'articles#destroy'
-  resources :articles
+  resources :articles do
+    resources :comments, shallow: true, only: [:create, :destroy]
+  end
+  
+
   resource :users, except: [:show, :destroy ] do
     collection do
       get :login
