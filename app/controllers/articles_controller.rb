@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
     def destroy
         @article.destroy
-        redirect_to article_path, notice: "刪除成功！！"
+        redirect_to articles_path, notice: "刪除成功！！"
     end
     
     private
