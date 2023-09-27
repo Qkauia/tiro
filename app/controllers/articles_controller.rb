@@ -51,9 +51,5 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
 
-    def authenticate_user!
-        if not user_signed_in?
-            redirect_to login_users_path, notice: "請先登入會員"
-        end
-    end
+    
 end
