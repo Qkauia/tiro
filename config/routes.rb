@@ -23,4 +23,14 @@ Rails.application.routes.draw do
       delete :logout
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :articles, only: [] do
+        member do
+          patch :like
+        end
+      end
+    end
+  end
 end

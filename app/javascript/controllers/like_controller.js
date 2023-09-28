@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["count"];
   
-  hi(e){
+  toggle(e){
     e.preventDefault();
     const currentCount = +this.countTarget.textContent
     this.countTarget.textContent = currentCount + 1;
