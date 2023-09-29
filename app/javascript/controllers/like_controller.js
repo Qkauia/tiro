@@ -1,4 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
+import xxx from "dayjs";
+console.log(xxx);
 
 // Connects to data-controller="like"
 export default class extends Controller {
