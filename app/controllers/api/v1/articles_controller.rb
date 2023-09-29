@@ -4,12 +4,6 @@ class Api::V1::ArticlesController < ApplicationController
     def like
         article = Article.find(params[:id])
 
-        if current_user.liked_articles.include?(article)
-            current_user.liked_articles.destroy(article)
-            render json: {liked: false, id: params[:id]}
-        else
-            current_user.liked_articles << article
-            render json: {liked: true, id: params[:id]}
-        end
+        render json: { liked: current_user.toggle_like(article) }
     end
 end

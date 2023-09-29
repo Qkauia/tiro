@@ -26,7 +26,19 @@ class User < ApplicationRecord
         #     self.email.split("@").first.capitalize
         # end
     end
+    #instance methods
+    def toggle_like
+      if liked?(record)
+        unlike!(record)
+        return false
+      else 
+        like!(record)
+        return true
+    end
 
+    def like!(record)
+      liked_articles << record
+    end
     # class methods
     def self.login(email, password)
       return nil if email.empty? or password.empty?
@@ -41,8 +53,17 @@ class User < ApplicationRecord
     end
 
     private
+
     def encrypt_password
         pw = "x#{self.password}y".reverse
         self.password = Digest::SHA1.hexdigest(pw)
+    end
+
+    def liked?(record)
+      liked_articles.include?(record)
+    end
+
+    def unlike!(record)
+      liked_articles.destroy(record)
     end
 end
