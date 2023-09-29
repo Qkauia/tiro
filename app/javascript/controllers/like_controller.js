@@ -4,8 +4,14 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["likebtn"];
   connect() {
-    const { id } = this.element.dataset;
+    const { id, liked } = this.element.dataset;
     this.id = id;
+    if (liked == "true"){
+      this.likebtnTarget.textContent = "喜歡大雕讚"
+    }else {
+      this.likebtnTarget.textContent = "不喜歡小雕雕";
+    }
+
   }
   
   toggle(e){

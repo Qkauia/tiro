@@ -37,9 +37,11 @@ class User < ApplicationRecord
       end
     end
 
-    def like!(record)
-      liked_articles << record
+    def liked?(record)
+      liked_articles.include?(record)
     end
+
+    
     # class methods
     def self.login(email, password)
       return nil if email.empty? or password.empty?
@@ -60,8 +62,8 @@ class User < ApplicationRecord
         self.password = Digest::SHA1.hexdigest(pw)
     end
 
-    def liked?(record)
-      liked_articles.include?(record)
+    def like!(record)
+      liked_articles << record
     end
 
     def unlike!(record)
