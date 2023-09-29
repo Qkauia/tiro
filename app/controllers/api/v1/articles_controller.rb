@@ -3,7 +3,9 @@ class Api::V1::ArticlesController < ApplicationController
 
     def like
         article = Article.find(params[:id])
+        
+        status = current_user.toggle_like(article)
 
-        render json: { liked: current_user.toggle_like(article) }
+        render json: { liked: status }
     end
 end

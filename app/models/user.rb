@@ -27,13 +27,14 @@ class User < ApplicationRecord
         # end
     end
     #instance methods
-    def toggle_like
+    def toggle_like(record)
       if liked?(record)
         unlike!(record)
         return false
       else 
         like!(record)
         return true
+      end
     end
 
     def like!(record)
