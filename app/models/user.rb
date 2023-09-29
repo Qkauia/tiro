@@ -6,6 +6,9 @@ class User < ApplicationRecord
     has_many :articles
     has_many :comments
 
+    has_many :like_logs
+    has_many :liked_articles, through: :like_logs, source: :article
+
     # vaidations
     validates :password, confirmation: true, length: { in: 8..12 }
     validates :email, presence: true, 

@@ -5,9 +5,9 @@
     <%= @article.title%>
 </h1>
 
-<div data-controller="like">
-    <a href="#" data-action="click->like#hi">讚</a>
-    <span data-like-target="count">0</span>
+<div data-controller="like" data-id="<%= @article.id %>">
+    <a href="#" data-like-target="likebtn" 
+                data-action="click->like#toggle">讚</a>
 </div>
 
 <article>

@@ -2,17 +2,35 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="like"
 export default class extends Controller {
-  static targets = ["count"];
+  static targets = ["likebtn"];
+  connect() {
+    const { id } = this.element.dataset;
+    this.id = id;
+  }
   
   toggle(e){
     e.preventDefault();
-    const currentCount = +this.countTarget.textContent
-    this.countTarget.textContent = currentCount + 1;
-
-    if (currentCount >= 5){
-      const o = { detail: { cc: currentCount}}
-      const evt = new CustomEvent("abc", o);
-      window.dispatchEvent(evt);
-    }
-  }
+    const url = `/api/v1/articles/${this.id}/like`;
+    const token = document.querySelector('meta[name="csrf-token"]').content
+    console.log(token);
+    fetch(url, {
+       method: "PATCH" ,
+       headers: {
+        "X-CSRF-Token": token, 
+       },
+      })
+    .then((resp) =>{
+      return resp.json();
+    })
+    .then(({ liked }) =>{
+      if (liked) {
+        this.likebtnTarget.textContent = "喜歡大雕讚";
+      }else {
+        this.likebtnTarget.textContent = "不喜歡小雕雕";
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  } 
 }
