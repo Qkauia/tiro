@@ -34,3 +34,8 @@
     justify-content: center;
     background-color: rgb(70, 226, 70);
 }
+
+.like_btn {
+    text-decoration: none;
+    color: red;
+}

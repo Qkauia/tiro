@@ -9,9 +9,9 @@ export default class extends Controller {
     const { id, liked } = this.element.dataset;
     this.id = id;
     if (liked == "true"){
-      this.likebtnTarget.textContent = "喜歡大雕讚"
+      this.likebtnTarget.textContent = "♥♥♥♥♥"
     }else {
-      this.likebtnTarget.textContent = "不喜歡小雕雕";
+      this.likebtnTarget.textContent = "♡♡♡♡♡";
     }
 
   }
@@ -32,9 +32,9 @@ export default class extends Controller {
     })
     .then(({ liked }) =>{
       if (liked) {
-        this.likebtnTarget.textContent = "喜歡大雕讚";
+        this.likebtnTarget.textContent = "♥♥♥♥♥";
       }else {
-        this.likebtnTarget.textContent = "不喜歡小雕雕";
+        this.likebtnTarget.textContent = "♡♡♡♡♡";
       }
     })
     .catch((err) => {

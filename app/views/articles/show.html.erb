@@ -1,5 +1,5 @@
 <div data-controller="hello"
-     data-action="abc@window->hello#go">X</div>
+     data-action="abc@window->hello#go"></div>
 
 <h1>
     <%= @article.title%>    
@@ -8,7 +8,8 @@
 <div data-controller="like" 
      data-liked="<%= current_user.liked?(@article) %>" 
      data-id="<%= @article.id %>">
-    <a href="#" data-like-target="likebtn" 
+    <a href="#" class="like_btn"
+                data-like-target="likebtn" 
                 data-action="click->like#toggle"></a>
 </div>
 
