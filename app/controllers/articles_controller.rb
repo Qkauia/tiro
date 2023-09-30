@@ -70,10 +70,7 @@ class ArticlesController < ApplicationController
     def set_article
         @article = Article.find(params[:id])
         if @article.password.present?
-
-            if not can_read?(params[:id])
-                redirect_to root_path 
-            end
+        redirect_to root_path if not can_read?(params[:id])
         end
     end
 
