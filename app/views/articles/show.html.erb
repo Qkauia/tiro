@@ -6,7 +6,7 @@
 </h1>
 
 <div data-controller="like" 
-     data-liked="<%= current_user.liked?(@article) %>" 
+     data-liked="<%= current_user&.liked?(@article) %>" 
      data-id="<%= @article.id %>">
     <a href="#" class="like_btn"
                 data-like-target="likebtn" 

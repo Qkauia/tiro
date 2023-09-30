@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
     before_action :set_article, only:[:show]
     before_action :set_user_article, only:[:edit, :update, :destroy]
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :unlock]
 
     def index
         @articles = Article.includes(:user).order(id: :desc)
@@ -49,7 +49,12 @@ class ArticlesController < ApplicationController
         result = Article.exists?(id: params[:id], password: params[:article][:password])
 
         if result
-            redirect_to article_path(id: params[:id])
+            if session[:article].present?
+                session[:article] << params[:id] unless session[:article].include?(params[:id])
+                else
+                    session[:article] = [params[:id]]
+                end
+                redirect_to article_path(id: params[:id])
         else
             redirect_back_or_to root_path, notice: "密碼錯誤"
         end
@@ -64,7 +69,19 @@ class ArticlesController < ApplicationController
 
     def set_article
         @article = Article.find(params[:id])
+        if @article.password.present?
+
+            if not can_read?(params[:id])
+                redirect_to root_path 
+            end
+        end
     end
+
+    def can_read?(id)
+        session[:article]&.include?(id)
+    end
+
+
 
     def set_user_article
         @article = current_user.articles.find(params[:id])
