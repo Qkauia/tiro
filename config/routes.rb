@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # patch 'articles/:id', to: 'articles#update'
   # delete 'articles/:id', to: 'articles#destroy'
   resources :articles do
+    member do
+      patch :unlock
+    end
     resources :comments, shallow: true, only: [:create, :destroy]
   end
   

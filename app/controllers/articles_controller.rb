@@ -44,6 +44,16 @@ class ArticlesController < ApplicationController
         @article.destroy
         redirect_to articles_path, notice: "刪除成功！！"
     end
+
+    def unlock
+        result = Article.exists?(id: params[:id], password: params[:article][:password])
+
+        if result
+            redirect_to article_path(id: params[:id])
+        else
+            redirect_back_or_to root_path, notice: "密碼錯誤"
+        end
+    end
     
     private
 
