@@ -3,6 +3,7 @@ class Article < ApplicationRecord
     acts_as_paranoid
 
     validates :title, presence: true
+    validates :password, presence: true
     
     belongs_to :user
     has_many :comments

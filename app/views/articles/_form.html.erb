@@ -11,6 +11,10 @@
         <%= f.label :content, '內文：'%> 
         <%= f.text_area :content%> 
     </div>
+    <div>
+        <%= f.label :password, '上鎖：'%> 
+        <%= f.password_field :password%> 
+    </div>
 
     <%= f.submit %>
 <% end %>
