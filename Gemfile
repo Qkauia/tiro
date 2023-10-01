@@ -72,3 +72,5 @@ group :test do
 end
 
 gem "paranoia", "~> 2.6"
+
+gem "tailwindcss-rails", "~> 2.0"

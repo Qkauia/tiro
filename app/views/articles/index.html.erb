@@ -1,4 +1,4 @@
-<h1>文章列表</h1>
+<h1 class="h1-type">文章列表</h1>
 
 <ul>
 <% @articles.each do |article|%>
@@ -10,9 +10,9 @@
                 <%= form_with(model: article,
                                 url: unlock_article_path(article),
                                 data: { turbo: false}) do |f| %>
-                <%= f.label :password, "輸入密碼"%>
+                <%= f.label :password, "輸入密碼", class:'action-btnclass'%>
                 <%= f.password_field :password%>
-                <%= f.submit "送出"%>
+                <%= f.submit "送出",class: 'action-btn'%>
                 <% end %>
             <% else %>
                 <%= article.content.truncate(50)%>

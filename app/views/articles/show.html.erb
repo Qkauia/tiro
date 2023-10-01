@@ -1,7 +1,7 @@
 <div data-controller="hello"
      data-action="abc@window->hello#go"></div>
 
-<h1>
+<h1 class="h1-type">
     <%= @article.title%>    
 </h1>
 
@@ -28,7 +28,7 @@
     <%= f.text_area :content %>
     </div>
     <br>
-    <div><%= f.submit "新增留言"%></div>
+    <div><%= f.submit "新增留言", class:'action-btn'%></div>
 
 <% end %>
 

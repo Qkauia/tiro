@@ -1,20 +1,23 @@
 <%= form_with(model: model, data:{ turbo: false }) do |f|  %>
-    <div>
-        <%= f.label :title, '標題：'%> 
-        <%= f.text_field :title%> 
-    </div>
-    <div>
-        <%= f.label :subtitle, '副標題：'%> 
-        <%= f.text_field :subtitle%> 
-    </div>
-    <div>
-        <%= f.label :content, '內文：'%> 
-        <%= f.text_area :content%> 
-    </div>
-    <div>
-        <%= f.label :password, '上鎖：'%> 
-        <%= f.password_field :password%> 
-    </div>
-
-    <%= f.submit %>
+    <section class="flex flex-col gap-4">
+        <div>
+            <%= f.label :title, '標題：'%> 
+            <%= f.text_field :title%> 
+        </div>
+        <div>
+            <%= f.label :subtitle, '副標題：'%> 
+            <%= f.text_field :subtitle%> 
+        </div>
+        <div>
+            <%= f.label :content, '內文：'%> 
+            <%= f.text_area :content%> 
+        </div>
+        <div>
+            <%= f.label :password, '上鎖：'%> 
+            <%= f.password_field :password%> 
+        </div>
+        <div>
+            <%= f.submit class: 'action-btn'%>
+        </div>
+    </section>
 <% end %>

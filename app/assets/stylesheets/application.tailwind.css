@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.action-btn {
+  @apply select-none hover:bg-rose-600 rounded inline-block text-white 
+  px-4 py-1 bg-rose-700;
+}
+
+.action-cruuentuser-btn{
+  @apply select-none hover:bg-green-500 rounded inline-block font-bold px-2 py-1 text-white bg-green-600
+}
+
+.action-btnclass {
+  @apply select-none hover:bg-green-600 rounded inline-block text-white px-2 py-1 bg-lime-700
+}
+.h1-type{
+  @apply text-2xl block;
+}
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
