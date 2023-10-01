@@ -1,6 +1,9 @@
 <nav>
+
       <ul>
         <% if user_signed_in? %>
+          <li><%= link_to '文章', articles_path %></li>
+          <li><%= link_to '相簿', albums_path %></li>
           <li><%= link_to "登出", logout_users_path, data: {turbo_method: 'delete', turbo_confirm: '確定要登出嗎？'} %></li>
           <li>歡迎回來:)<%= current_user.display_name%></li>
           <li><%= link_to "新增文章", new_article_path %></li>

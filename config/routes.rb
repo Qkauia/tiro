@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :albums
+
   namespace :api do
     namespace :v1 do
       resources :articles, only: [] do
