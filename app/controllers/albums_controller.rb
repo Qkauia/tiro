@@ -20,11 +20,22 @@ class AlbumsController < ApplicationController
     end
 
     def show
+        @album = Album.find(params[:id])
     end
+
+    def update
+        @album = current_user.albums.find(params[:id])
+        if @album.update(album_params)
+            redirect_to @album, notice: "上傳成功"
+        else
+            redirect_to @album, notice: "上傳失敗"
+        end
+    end
+
 
     private
 
     def album_params
-        params.require(:album).permit(:name, :description, :password, :online)
+        params.require(:album).permit(:name, :description, :password, :online, photos: [])
     end
 end
