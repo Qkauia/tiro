@@ -1,6 +1,14 @@
-require 'securerandom'
 class OrdersController < ApplicationController
+
+    require 'securerandom'
+
+    include Solutionable
+    
     before_action :authenticate_user!
+
+    def pay
+        @order = Order.find_by!(num: params[:id])
+    end
 
     def create
         price = solution_price(order_params[:solution])
@@ -10,11 +18,13 @@ class OrdersController < ApplicationController
         @order.amount = price
 
         if @order.save
-            redirect_to root_path, notice: "進入付款頁面"
+            redirect_to pay_order_path(@order.num), notice: "即將進入付款頁面"
         else
             render 
         end
     end
+
+    
 
 
     private
@@ -23,8 +33,4 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:name, :tel, :solution)
     end
 
-    def solution_price(s)
-        solutions = {pro: 10, premium: 50}
-        solutions[s.to_sym]
-    end
 end
