@@ -7,6 +7,6 @@
 
 <hr>
 
-<%= @album.photos.each do |photo| %>
+<% @album.photos.each do |photo| %>
     <%= image_tag photo, class: 'w-20 h-20'%>
 <% end %>
