@@ -1,0 +1,18 @@
+<h1 class="h1-type">建立訂單</h1>
+
+<ul>
+<%= form_with(model: @order, data:{ turbo: false}) do |f| %>
+    <div>
+        <li><%= f.label :name %></li>
+        <li><%= f.text_field :name %></li>
+    </div>
+    <div>
+        <li><%= f.label :tel %></li>
+        <li><%= f.phone_field :tel %></li>
+    </div>
+
+    <%= f.submit "前往付款", class: 'action-btn'%>
+
+
+<% end %>
+</ul>
