@@ -8,6 +8,15 @@ class OrdersController < ApplicationController
 
     def pay
         @order = Order.find_by!(num: params[:id])
+
+        gateway = Braintree::Gateway.new(
+            environment:  :sandbox,
+            merchant_id:  '9s6qxh93s5h6xmjt',
+            public_key:  '879mrhdqz84hh759',
+            private_key:  '153047bba84c7319cb447e1d9a438288',
+        )
+
+        @token = gateway.client_token.generate
     end
 
     def create
