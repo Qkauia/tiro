@@ -1,4 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: like_logs
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer          not null
+#  article_id :integer          not null
+#
 
 one:
   user: one

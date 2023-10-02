@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :payments, only: [:show]
   resources :orders, only: [:index, :show, :create] 
+  
   resources :articles do
     member do
       patch :unlock

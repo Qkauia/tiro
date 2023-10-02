@@ -2,6 +2,7 @@
 
 <ul>
 <%= form_with(model: @order, data:{ turbo: false}) do |f| %>
+    <%= f.hidden_field :solution, value: params[:id] %>
     <div>
         <li><%= f.label :name %></li>
         <li><%= f.text_field :name %></li>

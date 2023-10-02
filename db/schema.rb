@@ -88,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_080800) do
     t.string "num"
     t.string "name"
     t.string "tel"
-    t.string "status"
+    t.string "status", default: "pending"
     t.string "solution"
     t.integer "amount"
     t.integer "user_id", null: false

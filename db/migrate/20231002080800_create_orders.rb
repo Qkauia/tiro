@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.string :num
       t.string :name
       t.string :tel
-      t.string :status
+      t.string :status, default: 'pending'
       t.string :solution
       t.integer :amount
       t.belongs_to :user, null: false, foreign_key: true
