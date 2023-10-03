@@ -17,6 +17,27 @@ class Order < ApplicationRecord
   belongs_to :user
   require 'securerandom'
   before_create :set_num
+  include AASM
+  #paid
+  #cancelled
+  #failed
+
+  aasm column: 'status' , no_direct_assignment: true do
+    state :pending, initial: true#預設值
+    state :paid, :cancelled, :failed#其他status
+
+    event :pay do
+      transitions from: :pending, to: :paid
+    end
+
+    event :cancel do
+      transitions from: [:pending, :paid ], to: :cancelled
+    end
+
+    event :fail do
+      transitions from: :pending, to: :failed
+    end
+  end
 
   private
 
@@ -33,8 +54,5 @@ class Order < ApplicationRecord
 
 end
 
-#  amount     :integer
-#pending X
-#paid
-#cancelled
-#failed
+
+
