@@ -3,4 +3,12 @@
 訂單編號：<%= @order.num %>
 
 
-<div data-controller="braintree" data-token="<%= @token %>"></div>
+<%= form_with(model: @order,
+            url: please_pay_order_path(@order.num),
+            method: 'patch',
+            data: { turbo: false}) do |f| %> 
+
+    <div data-controller="braintree" data-token="<%= @token %>"></div>
+
+    <%= f.submit '送出', class: 'action-btn' %>
+<% end %>

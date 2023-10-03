@@ -8,15 +8,21 @@ class OrdersController < ApplicationController
 
     def pay
         @order = Order.find_by!(num: params[:id])
-
-        gateway = Braintree::Gateway.new(
-            environment:  :sandbox,
-            merchant_id:  '9s6qxh93s5h6xmjt',
-            public_key:  '879mrhdqz84hh759',
-            private_key:  '153047bba84c7319cb447e1d9a438288',
-        )
-
         @token = gateway.client_token.generate
+    end
+
+    def please_pay
+        order = Order.find_by!(num: params[:id])
+        result = gateway.transaction.sale(
+            amount: order.amount,
+            payment_method_nonce: params[:nonce]
+        )
+        if result.success?
+            order.update(status: 'paid')
+            redirect_to root_path, notice: "交易成功"
+        else
+            redirect_to root_path, notice: "交易發生錯誤，請稍後再試"
+        end
     end
 
     def create
@@ -42,4 +48,16 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:name, :tel, :solution)
     end
 
+    def gateway
+        gateway = Braintree::Gateway.new(
+            environment:  :sandbox,
+            merchant_id: Rails.application.credentials.braintree.merchant_id,
+            public_key: Rails.application.credentials.braintree.public_key,
+            private_key: Rails.application.credentials.braintree.private_key,
+        )
+    end
 end
+
+
+
+
