@@ -12,15 +12,10 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "letter_opener", "~> 1.8"
   gem "tailwindcss-rails", "~> 2.0"
   gem "annotate", "~> 3.2"
+
 end
 
 group :test do
@@ -47,5 +42,7 @@ gem "image_processing", "~> 1.2"
 gem "braintree", "~> 4.14"
 gem "aasm", "~> 5.5"
 gem "acts_as_list", "~> 1.1"
+
+
 
 
