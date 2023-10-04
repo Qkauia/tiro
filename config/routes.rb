@@ -27,7 +27,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :albums
+  resources :albums do
+    member do
+      patch :sort
+    end
+  end
 
   namespace :api do
     namespace :v1 do

@@ -19,6 +19,8 @@ class Album < ApplicationRecord
 
   belongs_to :user
 
+  acts_as_list 
+
 
   validates :name, presence: true
 end
