@@ -17,6 +17,9 @@ class Article < ApplicationRecord
     acts_as_paranoid
 
     validates :title, presence: true
+
+    enum category: { kids: 0, adult: 1, oldman: 2, others: 3}
+    
     
     belongs_to :user
     has_many :comments
