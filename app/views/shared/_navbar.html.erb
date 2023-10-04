@@ -4,19 +4,19 @@
       <ul class="flex  gap-2">
         <% if user_signed_in? %>
           <li><%= link_to "Hello,#{current_user.display_name}", root_path,class: 'action-cruuentuser-btn' %></li>
-          <li><%= link_to "新增文章", new_article_path, class: 'action-btn' %></li>
-          <li><%= link_to "新增相簿", new_album_path, class: 'action-btn' %></li>
-          <li><%= link_to "登出", logout_users_path,class: 'action-btnclass', data: {turbo_method: 'delete', turbo_confirm: '確定要登出嗎？'} %></li>
+          <li><%= link_to t('navbar.New article'), new_article_path, class: 'action-btn' %></li>
+          <li><%= link_to t('navbar.Add new album'), new_album_path, class: 'action-btn' %></li>
+          <li><%= link_to t('navbar.Sign out'), logout_users_path,class: 'action-btnclass', data: {turbo_method: 'delete', turbo_confirm: '確定要登出嗎？'} %></li>
         <% else %>
-          <li><%= link_to "登入", login_users_path,class: 'action-btn' %></li>
-          <li><%= link_to "註冊", new_users_path,class: 'action-btn' %></li>
+          <li><%= link_to t('navbar.Log in'), login_users_path,class: 'action-btn' %></li>
+          <li><%= link_to t('navbar.Register'), new_users_path,class: 'action-btn' %></li>
         <% end %>
       </ul>
       <ul class="flex gap-2">
-        <li><%= link_to "有名小站", root_path,class: 'action-btnclass' %></li>
-        <li><%= link_to '文章', articles_path,class: 'action-btnclass' %></li>
-        <li><%= link_to '相簿', albums_path,class: 'action-btnclass' %></li>
-        <li><%= link_to '加入VIP', pricing_path,class: 'action-btn' %></li>
+        <li><%= link_to t('navbar.Yumei Staion'), root_path,class: 'action-btnclass' %></li>
+        <li><%= link_to t('navbar.Article'), articles_path,class: 'action-btnclass' %></li>
+        <li><%= link_to t('navbar.Album'), albums_path,class: 'action-btnclass' %></li>
+        <li><%= link_to t('navbar.Join Vip'), pricing_path,class: 'action-btn' %></li>
       </ul>
 </nav>
 
