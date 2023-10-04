@@ -17,6 +17,10 @@
 .h1-type{
   @apply text-2xl block;
 }
+
+.action-btnlanguate {
+  @apply text-xs select-none hover:bg-blue-400 rounded inline-block text-white px-2 py-1 bg-blue-500
+}
 /*
 
 @layer components {

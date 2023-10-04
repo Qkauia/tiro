@@ -13,11 +13,17 @@
         <% end %>
       </ul>
       <ul class="flex gap-2">
+        
         <li><%= link_to t('navbar.Yumei Staion'), root_path,class: 'action-btnclass' %></li>
         <li><%= link_to t('navbar.Article'), articles_path,class: 'action-btnclass' %></li>
         <li><%= link_to t('navbar.Album'), albums_path,class: 'action-btnclass' %></li>
         <li><%= link_to t('navbar.Join Vip'), pricing_path,class: 'action-btn' %></li>
-      </ul>
+      
 </nav>
 
+      <ul class="inline-block py-1  ">
+        <li><%= link_to '中文', root_path(locale: 'tw'), class: 'action-btnlanguate'%></li>
+        <li><%= link_to 'English',root_path(locale: 'en'), class: 'action-btnlanguate' %></li>
+        <li><%= link_to '日本語', root_path(locale: 'jp'), class: 'action-btnlanguate'%></li>
+      </ul>
 

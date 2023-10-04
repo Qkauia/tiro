@@ -18,8 +18,8 @@ module WretchClone
     #
     config.time_zone = "Taipei"
     # config.i18n.default_locale = :en
-    # config.i18n.default_locale = :tw
-    config.i18n.default_locale = :jp
+    config.i18n.default_locale = :tw
+    # config.i18n.default_locale = :jp
 
     # config.eager_load_paths << Rails.root.join("extras")
   end
