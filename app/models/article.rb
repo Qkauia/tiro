@@ -22,12 +22,22 @@ class Article < ApplicationRecord
     
     
     belongs_to :user
-    has_many :comments
+    has_many :comments, -> { order(id: :desc) }
 
     has_many :like_logs
     has_many :users, through: :like_logs
 
     
+    def self.search(keyword)
+        if keyword.present?
+            where("title LIKE '%#{keyword}%' OR content LIKE '%#{keyword}%'").order(id: :desc) 
+        else
+            all
+        end
+    end
+
+    
+
 end
 
     #手製假刪除

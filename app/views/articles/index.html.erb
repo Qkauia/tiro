@@ -1,5 +1,13 @@
 <h1 class="h1-type">文章列表</h1>
 
+<br>
+<%= form_with(url: '', method: :get) do |f| %>
+    <%= f.search_field :keyword ,value: params[:keyword]%>
+    <%= f.submit 'Search', class: 'action-btn'%>
+    <%= link_to 'clear', articles_path, class: 'action-btn'%>
+<% end %>
+
+<hr class="my-5">
 <ul>
 <% @articles.each do |article|%>
     <li class="pd-20 border-2 mt-5 rounded">
