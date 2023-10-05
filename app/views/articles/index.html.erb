@@ -29,12 +29,12 @@
             </p>
             <footer><%= link_to "繼續閱讀", article_path(article.id)%></footer>
         </article>
-        <%= link_to "編輯", edit_article_path(article) %>
+        <%= link_to "編輯", edit_article_path(article) if policy(article).update?%>
         <%= link_to "刪除", article_path(article.id), 
                                 data: { 
                                 turbo_method: 'delete',
                                 turbo_confirm: '確定要刪除嗎？'
-                                } %>
+                                } if policy(article).destroy?%>
     </li>
 <% end %>
 </ul>

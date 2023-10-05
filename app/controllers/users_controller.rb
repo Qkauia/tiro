@@ -37,6 +37,8 @@ class UsersController < ApplicationController
         redirect_to root_path, noice: "已經登出！！"
     end
 
+    
+
     private
 
     def user_params

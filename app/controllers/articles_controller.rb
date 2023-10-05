@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
 
     def new
+        authorize :article
         @article = Article.new
     end
 
@@ -38,6 +39,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
+        authorize(@article)
         if @article.update(article_params)
             redirect_to article_path, notice: "修改成功！！"
         else

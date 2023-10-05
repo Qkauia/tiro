@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
+    include Pundit::Authorization
+    
     #意外處理
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from Pundit::NotAuthorizedError, with: :not_found
     #helper匯出給view使用
     helper_method :user_signed_in?, :current_user
 
     around_action :switch_locale
+
+    
 
     
 
