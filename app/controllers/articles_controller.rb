@@ -6,7 +6,11 @@ class ArticlesController < ApplicationController
 
     def index
         keyword = params[:keyword]
-        @articles = Article.search(keyword).order(id: :desc)
+        # @articles = Article.search(keyword).order(id: :desc)
+
+        @q = Article.ransack(title_or_content_or_subtitle_cont:(keyword))
+        @articles = @q.result(distinct: true)
+
     end
 
 

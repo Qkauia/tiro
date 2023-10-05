@@ -42,6 +42,8 @@ gem "image_processing", "~> 1.2"
 gem "braintree", "~> 4.14"
 gem "aasm", "~> 5.5"
 gem "acts_as_list", "~> 1.1"
+gem "ransack", "~> 4.0"
+
 
 
 

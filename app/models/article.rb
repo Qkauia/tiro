@@ -27,14 +27,23 @@ class Article < ApplicationRecord
     has_many :like_logs
     has_many :users, through: :like_logs
 
-    
-    def self.search(keyword)
-        if keyword.present?
-            where("title LIKE '%#{keyword}%' OR content LIKE '%#{keyword}%'").order(id: :desc) 
-        else
-            all
-        end
+    def self.ransackable_attributes(auth_object = nil)
+        [ "content", "subtitle", "title", "user_id"]
     end
+
+    def self.ransackable_associations(auth_object = nil)
+        # ["comments", "like_logs", "user", "users"]
+        []
+    end
+
+    
+    # def self.search(keyword)
+    #     if keyword.present?
+    #         where("title LIKE '%#{keyword}%' OR content LIKE '%#{keyword}%'").order(id: :desc) 
+    #     else
+    #         all
+    #     end
+    # end
 
     
 

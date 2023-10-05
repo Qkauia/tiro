@@ -13,6 +13,7 @@
     <li class="pd-20 border-2 mt-5 rounded">
         <%= link_to article.title, article_path(article.id)%>
         <article >
+            <div><%= article.subtitle.truncate(20)%></div>
             <p>
             <% if article.password.present?%>
                 <%= form_with(model: article,
