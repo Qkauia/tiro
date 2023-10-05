@@ -1,18 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
+  let(:user) { create(:user)}
   it "可以註冊" do
-    visit "/"
-    click_on "註冊"
-
-    expect(page).to have_content("註冊帳號")
-
-    fill_in 'Name',with: 'kkkkkkk'
-    fill_in 'E-mail',with: '8@8.jj'
-    fill_in 'Password',with: '123445678'
-    fill_in 'Password confirmation',with: '123445678'
-
-    click_on "送出"
+    sing_up(name: '晶心老爹',
+          email: '888@888.888',
+          password: '12345678', 
+          password_confirm: '12345678' )
     
     expect(page).to have_content('註冊成功:)')
     expect(current_path).to eq '/'
@@ -21,23 +15,32 @@ RSpec.feature "Users", type: :feature do
 
   it "可以登入" do
     #建立會員
-    User.create(email: 'cc@cc.cc', password: '12341234')
-
-    visit "/"
-
-    click_on '登入'
-    expect(page).to have_content '會員登入'
-
-    fill_in 'E-mail',with: 'cc@cc.cc'
-    fill_in 'Password',with: '12341234'
-
-    click_on "送出"
+    
+    
+    login(email: user.email, password: '12345678')
 
     expect(page).to have_content('登入成功！！')
     expect(current_path).to eq '/'
   end
 
-  # it "" do
-  #   visit "/"
+  it "不可重複註冊" do
+    
+    
+    
+    sing_up(name: 'Qoo',
+            email: user.email,
+            password: '12345678', 
+            password_confirm: '12345678' )
+    
+    expect(page.status_code).to be 422
+    #E-mail輸入框出現紅框
+    #頁面表留在
+  end
+
+
+  
 
 end
+
+
+# expect(page).to have_css('.field_with_errors', count: 3)

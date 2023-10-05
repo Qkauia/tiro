@@ -4,7 +4,7 @@
       <ul class="flex  gap-2">
         <% if user_signed_in? %>
           <li><%= link_to "Hello,#{current_user.display_name}", root_path,class: 'action-cruuentuser-btn' %></li>
-          <li><%= link_to t('navbar.New article'), new_article_path, class: 'action-btn' %></li>
+          <li><%= link_to t('navbar.New article'), new_article_path, class: 'action-btn', aria: { label: 'NewArticle Button'} %></li>
           <li><%= link_to t('navbar.Add new album'), new_album_path, class: 'action-btn' %></li>
           <li><%= link_to t('navbar.Sign out'), logout_users_path,class: 'action-btnclass', data: {turbo_method: 'delete', turbo_confirm: '確定要登出嗎？'} %></li>
         <% else %>

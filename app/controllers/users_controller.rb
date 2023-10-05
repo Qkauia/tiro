@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             redirect_to root_path, notice: "註冊成功:)"
         else
             flash[:notice] = "註冊失敗"
-            render :new
+            render :new, status: 422
         end
     end
 
