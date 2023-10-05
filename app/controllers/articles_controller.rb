@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
         # @articles = Article.search(keyword).order(id: :desc)
 
         @q = Article.ransack(title_or_content_or_subtitle_cont:(keyword))
-        @articles = @q.result(distinct: true)
+        @articles = @q.result(distinct: true).page(params[:page]).per(4)
 
     end
 

@@ -6,7 +6,9 @@
     <%= f.submit 'Search', class: 'action-btn'%>
     <%= link_to 'clear', articles_path, class: 'action-btn'%>
 <% end %>
-
+<br>
+<hr class="my-5">
+<%= paginate @articles%>
 <hr class="my-5">
 <ul>
 <% @articles.each do |article|%>
@@ -36,5 +38,10 @@
                                 turbo_confirm: '確定要刪除嗎？'
                                 } if policy(article).destroy?%>
     </li>
+    
 <% end %>
+<br>
+<hr class="my-5">
+<%= paginate @articles%>
+<hr class="my-5">
 </ul>
